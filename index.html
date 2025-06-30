@@ -136,7 +136,8 @@
   <header>
     <h1>Cinemorfose</h1>
   </header>
-  <nav class="nav">
+  <nav class="nav" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <div>
     <a href="#">Início</a>
     <a href="#">Lançamentos</a>
     <div class="nav-item">
@@ -174,13 +175,17 @@
         <a href="#">Isekai</a>
       </div>
     </div>
+      </div>
+    <form action="#" method="get" style="margin-top: 10px;">
+      <input type="text" name="q" placeholder="Buscar filmes ou séries..." style="padding: 6px 10px; border-radius: 4px; border: none; background-color: #ffd700; color: #111; width: 200px;">
+      <button type="submit" style="padding: 6px 12px; background-color: #ff3366; color: white; border: none; border-radius: 4px; cursor: pointer;">Buscar</button>
+    </form>
   </nav>
   <main>
     <section class="section">
       <h2>Filmes em Alta</h2>
       <div class="grid">
-        
-<div class="card">
+        <div class="card">
           <img src="https://m.media-amazon.com/images/I/712N7RdrlTL._UF894,1000_QL80_.jpg" alt="Superman">
           <div class="card-title">Superman</div>
         </div>
@@ -215,7 +220,7 @@
         </div>
         <div class="card">
           <img src="https://imgnews.pstatic.net/image/108/2025/01/01/0003293219_001_20250101120909521.jpg?type=w647" alt="Round 6 - Temporada 3">
-          <div class="card-title">Round 6 - Temporada 3</div>
+          <div class="card-title"><a href="https://cinemorfose.github.io/site/" style="color: inherit; text-decoration: none;">Round 6 - Temporada 3</a></div>
         </div>
       </div>
     </section>
@@ -223,5 +228,20 @@
   <footer>
     © 2025 Cinemorfose - Todos os direitos reservados.
   </footer>
+<script>
+  const form = document.querySelector('form');
+  const input = form.querySelector('input[name="q"]');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const query = input.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const title = card.textContent.toLowerCase();
+      card.style.display = title.includes(query) ? 'block' : 'none';
+    });
+  });
+</script>
 </body>
 </html>
